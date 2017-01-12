@@ -29,7 +29,10 @@ class HardCoded(object):
     pass
 
   def predict(self, data):
-    return []
+    predictions = []
+    for item in data:
+      predictions.append("setosa")
+    return predictions
 
 
 def find_percentage(training_sets, testing_set):
@@ -50,7 +53,7 @@ def find_percentage(training_sets, testing_set):
     if predictions[i] == testing_target_set[i]:
       right += 1
 
-  percentage = right / len(testing_set) * 100
+  percentage = right / float(len(testing_set)) * 100
 
   return percentage
 
@@ -73,4 +76,4 @@ for i in range(5):
   percentage = find_percentage(sets, testing_set)
   percentages.append(percentage)
 
-print percentages
+print sum(percentages) / len(percentages)
