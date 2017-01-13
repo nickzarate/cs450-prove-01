@@ -58,22 +58,24 @@ def find_percentage(training_sets, testing_set):
   return percentage
 
 
+def main():
+  irises = []
 
-irises = []
+  for i in range(len(irises_data.data)):
+    iris = Iris(irises_data.data[i][0], irises_data.data[i][1], irises_data.data[i][2], irises_data.data[i][3], irises_data.target_names[irises_data.target[i]])
+    irises.append(iris)
 
-for i in range(len(irises_data.data)):
-  iris = Iris(irises_data.data[i][0], irises_data.data[i][1], irises_data.data[i][2], irises_data.data[i][3], irises_data.target_names[irises_data.target[i]])
-  irises.append(iris)
+  random.shuffle(irises)
 
-random.shuffle(irises)
+  original_sets = [irises[:30:], irises[30:60:], irises[60:90:], irises[90:120:], irises[120::]]
+  percentages = []
 
-original_sets = [irises[:30:], irises[30:60:], irises[60:90:], irises[90:120:], irises[120::]]
-percentages = []
+  for i in range(5):
+    sets = list(original_sets)
+    testing_set = sets.pop(i)
+    percentage = find_percentage(sets, testing_set)
+    percentages.append(percentage)
 
-for i in range(5):
-  sets = list(original_sets)
-  testing_set = sets.pop(i)
-  percentage = find_percentage(sets, testing_set)
-  percentages.append(percentage)
+  print sum(percentages) / len(percentages)
 
-print sum(percentages) / len(percentages)
+main()
