@@ -103,5 +103,4 @@ def main():
     print("Scikit learn's percentage:")
     print(sum(sk_percentages) / len(sk_percentages))
 
-
 main()
