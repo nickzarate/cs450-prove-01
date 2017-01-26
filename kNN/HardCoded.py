@@ -32,7 +32,7 @@ class HardCoded(object):
             for j in range(len(self.data[i])):
                 self.data[i][j] = (self.data[i][j] - self.mean[j]) / self.stddev[j]
 
-    def predict(self, data, num_neighbors):
+    def predict(self, data, num_neighbors, testing_data):
         predictions = []
         distances = []
         for i in range(len(data)):
