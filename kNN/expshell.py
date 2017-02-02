@@ -1,5 +1,5 @@
-from HardCoded import HardCoded
-from Iris import Iris
+from kNN.HardCoded import HardCoded
+from kNN.Iris import Iris
 import random
 from functools import reduce
 from sklearn import datasets
