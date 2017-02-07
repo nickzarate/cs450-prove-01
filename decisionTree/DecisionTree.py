@@ -75,12 +75,6 @@ class DecisionTree(object):
 
         return entropy
 
-    # def readable(self, data):
-    #     print("--------------")
-    #     for value in data:
-    #         print(value)
-    #     print("--------------")
-
     def print_tree(self, tree, recursions):
         recursions += 1
         if isinstance(tree, list) and isinstance(tree[0], list):
@@ -89,12 +83,10 @@ class DecisionTree(object):
             return
 
         if not isinstance(tree, dict):
-            # print("tree is a leaf node")
             print("\t" * recursions, tree)
             return
 
         for key, value in tree.items():
-            # print("tree is a tree with key value pair:", key, value)
             print("\t" * recursions, key)
             self.print_tree(value, recursions)
 
@@ -165,15 +157,12 @@ class DecisionTree(object):
             return tree
 
     def train(self, data):
-        # data = data.values
-
         if len(data) > 0:
             default = self.frequency_counter(data, len(data[0]) - 1)
             attribute_names = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
-            # data = data.tolist()
             self.set_attribute_names(data)
             self.tree = self.make_tree(data, attribute_names, default)
-            # self.print_tree(self.tree, -1)
+            self.print_tree(self.tree, -1)
 
     def predict(self, data):
         predictions = []
@@ -185,8 +174,3 @@ class DecisionTree(object):
             predictions.append(traversal_tree)
 
         return predictions
-
-            # for key, value in self.tree.items():
-            #     if self.attribute[self.tree[name]]
-            # for i in range(len(self.attribute_order)):
-            #     if self.attribute_names[self.attribute_order[i]]

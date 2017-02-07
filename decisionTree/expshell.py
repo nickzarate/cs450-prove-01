@@ -22,8 +22,6 @@ irises_data = {
     'petal_width': petal_width,
     'target': irises_raw_data.target
 }
-print(type(irises_data))
-print(irises_data)
 formatted_iris = pd.DataFrame(irises_data, columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'target'])
 bins = 3
 group_names = ['Short', 'Medium', 'Long']
@@ -34,12 +32,12 @@ formatted_iris['petal_width'] = pd.cut(formatted_iris['petal_width'], bins, labe
 
 # print("before importing lenses data")
 # Pre-process lenses data
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/lenses/lenses.data"
-lenses_data = pd.read_csv(url)#, columns = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'])
-print(lenses_data)
-print(type(lenses_data))
-formatted_lenses = pd.DataFrame(lenses_data, columns = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'])
-print(formatted_lenses)
+# url = "https://archive.ics.uci.edu/ml/machine-learning-databases/lenses/lenses.data"
+# lenses_data = pd.read_csv(url)#, columns = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'])
+# print(lenses_data)
+# print(type(lenses_data))
+# formatted_lenses = pd.DataFrame(lenses_data, columns = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'])
+# print(formatted_lenses)
 # formatted_lenses = pd.DataFrame(lenses_data, columns = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'])
 # print(formatted_lenses)
 
