@@ -11,13 +11,18 @@ class DecisionTree(object):
 
     def set_attribute_names(self, data):
         attribute_names = {}
+        most_common_attribute_values = []
         for name in self.attribute_names:
             attribute_names[name] = []
         for instance in data:
             for i in range(len(instance) - 1):
                 if instance[i] not in attribute_names[self.attribute_names[i]]:
                     attribute_names[self.attribute_names[i]].append(instance[i])
+        for i in range(len(data[0]) - 1):
+            most_common_attribute_values.append(self.frequency_counter(data, i))
+
         self.attribute_names = attribute_names
+        self.most_common_attribute_values = most_common_attribute_values
 
     def frequency_counter(self, data, col):
         # Check to see if invalid column index or if data is empty
