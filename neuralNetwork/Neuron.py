@@ -1,40 +1,42 @@
 import random
+import math
 
 
 class Neuron(object):
 
-    def __init__(self, target, num_weights):
+    def __init__(self, num_weights):
         self.activation = 0
-        self.neuron_name = target
+        self.input_values = []
         self.weights = []
-        self.learning_rate = 0.3
         self.target = 0
+        self.error = 0
         for i in range(num_weights):
             self.weights.append(random.uniform(-1.0, 1.0))
-        pass
+        self.new_weights = list(self.weights)
 
-    def set_target(self, target):
-        if self.neuron_name == target:
-            self.target = 1
-        else:
-            self.target = 0
+    def get_activation(self):
+        return self.activation
 
-    def setup(self, instance):
-        bias = list(instance)
-        bias.insert(0, -1.0)
-        self.input_values = bias
-        print("weights and input values")
-        print(self.weights)
-        print(self.input_values)
+    def set_error(self, error):
+        self.error = error
 
-    def calculate_output(self):
+    def get_error(self):
+        return self.error
+
+    def get_weight(self, index):
+        return self.weights[index]
+
+    def calculate_output(self, input_values):
         self.activation = 0
+        self.input_values = list(input_values)
+        self.input_values.insert(0, -1.0)
         for i in range(len(self.input_values)):
             self.activation += self.input_values[i] * self.weights[i]
-        print("activation", self.activation)
+        self.activation = 1.0 / (1.0 + (math.pow(math.e, -self.activation)))
+
+    def set_new_weights(self, learning_rate):
+        for i in range(len(self.new_weights)):
+            self.new_weights[i] -= (learning_rate * self.error * self.input_values[i])
 
     def update_weights(self):
-        print(self.target)
-        print(self.learning_rate)
-        for i in range(len(self.weights)):
-            self.weights[i] -= (self.learning_rate * (self.activation - self.target) * self.input_values[i])
+        self.weights = list(self.new_weights)
